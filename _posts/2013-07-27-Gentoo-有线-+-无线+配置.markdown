@@ -1,0 +1,35 @@
+---
+title:  Gentoo 有线+无线配置
+layout: post
+author:
+  name: macint0sh
+  date: 2014-03-06 13:25:27
+
+---
+Gentoo 有线网络与无线网络一起使用的配置过程
+
+### \#ln -s net.lo net.eth0 
+### \#rc-update add net.eth0 default 
+### \#ln -s net.lo net.wlan0
+### \#rc-update add net.wlan0 default 
+### \#cat /etc/conf.d/net
+    mac_wlan0="aa:bb:cc:dd:ee:ff"
+    config_eth0="192.168.1.100/24"
+    routes_eth0="192.168.1.0/24 via 192.168.1.1"
+    modules="wpa_supplicant"
+    wpa_supplicant_wlan0="-Dnl80211"
+    config_wlan0="192.168.0.100/24"
+    routes_wlan0="default via 192.168.0.1"
+### \#cat /etc/wpa_supplicant/wpa_supplicant.conf
+    ap_scan=1
+    ctrl_interface=/var/run/wpa_supplicant
+    network={
+       ssid="XXX"
+       scan_ssid=0
+       proto=WPA RSN
+       key_mgmt=WPA-PSK
+       pairwise=CCMP TKIP
+       group=CCMP TKIP
+       psk="xxxxxxxx"
+    }
+
