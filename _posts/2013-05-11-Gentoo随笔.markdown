@@ -4,55 +4,53 @@ layout: post
 author:
   name: macint0sh
 ---
-\------------------------------------------------<br>
+\------------------------------------------------    
 <img src="/img/gentoo-note.png">
-解决方法：<br>
-->提高低版本依赖[也可以降低高版本依赖]<br>
+# 解决方法：   
+->提高低版本依赖[也可以降低高版本依赖]   
 echo  x11-themes/gnome-themes-standard ~x86 >> /etc/portage/package.keywords 
 
-\------------------------------------------------<br>
-模块相关软件必须保证:<br>
-运行内核=编译内核<br>
-禁止随意复制内核长期运行<br>
-\------------------------------------------------<br>
-Gentoo创建二进制软件包
+\------------------------------------------------   
+模块相关软件必须保证:   
+运行内核=编译内核   
+禁止随意复制内核长期运行   
+\------------------------------------------------   
+# Gentoo创建二进制软件包
 
 <sup>1</sup>如果这个软件包还没有安装，可以使用emerge选项--buildpkg（简称-b）安装软件同时创建一个二进制包:
 
-安装软件并且创建二进制包:<br>
+安装软件并且创建二进制包:   
 `emerge --buildpkg conky`
 
 如果你要Portage默认安装软件时创建二进制包，可以在/etc/make.conf中将buildpkg关键词包含在变量FEATURES中。
 
-自动创建二进制包:
-
+自动创建二进制包:   
 `FEATURES="buildpkg"`
 
-<sup>2</sup>不安装软件，只是创建二进制软件包，可以使用选项--buildpkgonly（简称-B）:
-
+<sup>2</sup>不安装软件，只是创建二进制软件包，可以使用选项--buildpkgonly（简称-B）:   
 `emerge --buildpkgonly conky`
 
 <sup>3</sup>如果一个软件已经安装，可以使用quickpkg命令，它会将已安装的文件打成一个包。这对于备份说是很有用。
 
-使用quickpkg:<br>
-`quickpkg conky`<br>
-\------------------------------------------------<br>
-网络接口命名改为eth0+wlan0 :<br>
-\#nano /etc/udev/rules.d/70-persistent-net.rules<br> 
+使用quickpkg:   
+`quickpkg conky`   
+\------------------------------------------------   
+# 网络接口命名改为eth0+wlan0 :   
+####  \#nano /etc/udev/rules.d/70-persistent-net.rules     
 `SUBSYSTEM=="net",ACTION=="add",DRIVERS=="?*",ATTR{address}=="00:00:00:00:00:0A",
 ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="eth*",NAME="eth0"`
 `SUBSYSTEM=="net",ACTION=="add",DRIVERS=="?*",ATTR{address}=="00:00:00:00:00:0B",
 ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
-\------------------------------------------------<br>
-Linux Live 启动VFS异常，更新下边包后解决:<br>
->>> emerge (1 of 5) app-shells/push-1.5-r1<br>
->>> emerge (2 of 5) sys-kernel/aufs-sources-3.12.1<br>
->>> emerge (3 of 5) sys-auth/pambase-20120417-r3<br>
->>> emerge (4 of 5) dev-lang/python-exec-0.3.1<br>
->>> emerge (5 of 5) dev-python/python-exec-10000.1<br>
-\------------------------------------------------<br>
-删除KDE包<br>
-`emerge -avC kde-base/*` <br>
-\------------------------------------------------<br>
+\------------------------------------------------   
+# Linux Live 启动VFS异常，更新下边包后解决:    
+>>> emerge (1 of 5) app-shells/push-1.5-r1   
+>>> emerge (2 of 5) sys-kernel/aufs-sources-3.12.1    
+>>> emerge (3 of 5) sys-auth/pambase-20120417-r3   
+>>> emerge (4 of 5) dev-lang/python-exec-0.3.1    
+>>> emerge (5 of 5) dev-python/python-exec-10000.1       
+\------------------------------------------------    
+# 删除KDE包    
+`emerge -avC kde-base/*`  
+\------------------------------------------------  
 `ebuild /usr/portage/***/***.ebuild digest`
 

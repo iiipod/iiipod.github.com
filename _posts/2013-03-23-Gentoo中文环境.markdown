@@ -1,0 +1,26 @@
+---
+title:  Gentoo中文环境
+layout: post
+author:
+  name: macint0sh
+---
+1.编辑/etc/locale.gen，确保以下locale未被注释：         
+    en_US ISO-8859-1    
+    en_US.UTF-8 UTF-8    
+    zh_CN GB18030    
+    zh_CN.GBK GBK    
+    zh_CN GB2312    
+    zh_CN.UTF-8 UTF-8   
+
+2.运行`locale-gen`命令，生成locale   
+
+3.编辑/etc/env.d/02locale 内容如下：            
+#### \#nano /etc/env.d/02locale    
+    LANG="zh_CN.UTF-8"   
+    LC_COLLATE="C"   
+
+然后执行`locale-gen`   
+
+4.安装kde-l10n包    
+
+5.系统设置里边选择中文    
