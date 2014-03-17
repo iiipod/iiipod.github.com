@@ -28,4 +28,12 @@ author:
  ->font-bitstream-type1   
  ->xdm xrdb libXinerama   
  ===============================    
+### 4.安装flash插件    
+ 下载    
+ 解压     
+    cp libflashplayer.so /usr/lib/mozilla/plugins/     
+### 5.声音支持    
+    slackpkg install alsa-utils alsa-lib    
+ ===============================    
+
 
