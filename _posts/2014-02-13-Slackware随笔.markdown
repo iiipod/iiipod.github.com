@@ -29,7 +29,7 @@ author:
  ->xdm xrdb libXinerama   
  ===============================    
 ### 4.安装flash插件    
-#### 下载 [flash player for linux](http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.346/install_flash_player_11_linux.i386.tar.gz)      
+#### 下载 [flash player for linux](http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.346/install_flash_player_11_linux.i386.tar.gz) \[请注意下载最新版本\]     
 #### 解压:           
     tar zxvf install_flash_player_11_linux.i386.tar.gz       
 #### 安装:           
