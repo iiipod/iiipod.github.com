@@ -29,8 +29,8 @@ author:
  ->xdm xrdb libXinerama   
  ===============================    
 ### 4.安装flash插件    
- 下载    
- 解压     
+ 下载[lash player for linux](http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.346/install_flash_player_11_linux.i386.tar.gz)      
+ 解压 tar zxvf install_flash_player_11_linux.i386.tar.gz       
     cp libflashplayer.so /usr/lib/mozilla/plugins/     
 ### 5.声音支持    
     slackpkg install alsa-utils alsa-lib    
