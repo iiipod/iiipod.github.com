@@ -73,7 +73,8 @@ input匹配目的IP是本机的数据包，forward匹配流经本机的数据包
 #### 配置SSH规则
 
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-    iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT  如果你把OUTPUT 设置成DROP，就需要加上这个规则,否则SSH还是不能登录，因为SSH服务职能进不能出。
+    iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT  如果你把OUTPUT 设置成DROP，\    
+        就需要加上这个规则,否则SSH还是不能登录，因为SSH服务职能进不能出。
 
 #### 只允许192.168.0.3的机器进行SSH连接
 
@@ -104,8 +105,9 @@ masquerade和snat的主要区别在于，snat是把源地址转换为固定的IP
 
 #### 开启转发功能
 
-    iptables -A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT 只允许已建连接及相关链接对内转发
-    ptables -A FORWARD -i eth1 -o eh0 -j ACCEPT 允许对外转发
+    iptables -A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT \       
+        只允许已建连接及相关链接对内转发
+    iptables -A FORWARD -i eth1 -o eh0 -j ACCEPT 允许对外转发
 
 #### 过滤某个MAC
 
@@ -132,5 +134,5 @@ masquerade和snat的主要区别在于，snat是把源地址转换为固定的IP
 
 ####存储于恢复iptables规则
 
-    iptables-save    > somefile
+    iptables-save > somefile
     iptables-restore < somefile
