@@ -1,0 +1,17 @@
+---
+title:  Gentoo配置终端字体
+layout: post
+author:
+  name: macint0sh
+---
+# Gentoo配置终端字体
+
+>将字体文件复制到/usr/share/consolefonts/目录       
+`cp ter-120b.psf.gz /usr/share/consolefonts/`       
+
+>编辑 /etc/conf.d/consolefont,加入或者修改      
+`consolefont="ter-120b"`      
+
+>开机启动服务        
+`rc-update add consolefont sysinit`       
+
