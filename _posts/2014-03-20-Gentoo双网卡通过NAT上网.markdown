@@ -47,10 +47,10 @@ author:
 
     rc-service iptables save
     rc-service iptables start
-    iptables -t nat -A POSTROUTING -s 10.10.1.0/24 -o eth0 -j MASQUERADE
-    iptables -A FORWARD -i eth0 -j ACCEPT
-    iptables -t nat -A POSTROUTING -s 10.10.1.0/24 -o wlan0 -j MASQUERADE
-    iptables -A FORWARD -i wlan0 -j ACCEPT
+    iptables -t nat -I POSTROUTING -s 10.10.1.0/24 -o eth0 -j MASQUERADE
+    iptables -I FORWARD -i eth0 -j ACCEPT
+    iptables -t nat -I POSTROUTING -s 10.10.1.0/24 -o wlan0 -j MASQUERADE
+    iptables -I FORWARD -i wlan0 -j ACCEPT
 >启动服务
 
     rc-service net.eth0 start
@@ -117,10 +117,10 @@ author:
 
     rc-service iptables save
     rc-service iptables start
-    iptables -t nat -A POSTROUTING -s 10.10.1.0/24 -o eth00 -j MASQUERADE
-    iptables -A FORWARD -i eth0 -j ACCEPT
-    iptables -t nat -A POSTROUTING -s 10.10.1.0/24 -o wlan0 -j MASQUERADE
-    iptables -A FORWARD -i wlan0 -j ACCEPT
+    iptables -t nat -I POSTROUTING -s 10.10.1.0/24 -o eth00 -j MASQUERADE
+    iptables -I FORWARD -i eth0 -j ACCEPT
+    iptables -t nat -I POSTROUTING -s 10.10.1.0/24 -o wlan0 -j MASQUERADE
+    iptables -I FORWARD -i wlan0 -j ACCEPT
 >启动服务
 
     rc-service net.eth0 start
