@@ -13,7 +13,8 @@
 html, body { height: 100%; }
 
 body {
-  background-color: #FFF;
+/*  background-color: #FFF;*/
+  background-image: url('/background.png');
   font: 13.34px Helvetica, Arial, sans-serif;
   font-size: small;
   text-align: center;
