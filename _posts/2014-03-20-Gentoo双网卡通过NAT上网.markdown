@@ -62,13 +62,13 @@ author:
 >编辑 /etc/conf.d/net
 
     ###eth0配置，确保能上网即可
-    config_eth0=( "192.168.1.10/24" )
-    routes_ethn0="default via 192.168.0.1"
+    config_eth0="192.168.1.10/24"
+    routes_eth0="default via 192.168.0.1"
     ###wlan0配置，ip地址可改变，保证与/etc/dhcp/dhcp.conf一致
     config_wlan0="10.10.1.1/24"
     routes_wlan0="10.10.1.0/24 via 10.10.1.1"
     mode_wlan0="master"
->安装dhcp hostapd
+>安装 dhcp hostapd
 
     emerge -av net-misc/dhcp net-wireless/hostapd
 >编辑/etc/dhcp/dhcp.conf
@@ -128,4 +128,3 @@ author:
     rc-service hostapd start
     rc-service dhcpd start
 >注意:启动hostapd时确保wpa_supplicant进程未占用wlan0口
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
