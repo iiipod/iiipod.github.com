@@ -14,17 +14,16 @@ author:
 
 2.运行`locale-gen`命令，生成locale   
 
-3.编辑/etc/env.d/02locale 内容如下：            
+3.编辑/etc/env.d/02locale 内容如下[全局设置]：            
 #### \#nano /etc/env.d/02locale    
     LANG="zh_CN.UTF-8"   
     LC_COLLATE="C"   
 
 然后执行`locale-gen`   
 
-4.编辑~/.xinitrc文件
+4.编辑~/.xinitrc文件[个人设置]:
 
     #!/bin/bash
-
     export LANG=zh_CN.UTF-8
     export LC_ALL="zh_CN.UTF-8"
 
