@@ -21,6 +21,13 @@ author:
 
 然后执行`locale-gen`   
 
-4.安装kde-l10n包    
+4.编辑~/.xinitrc文件
 
-5.系统设置里边选择中文    
+    #!/bin/bash
+
+    export LANG=zh_CN.UTF-8
+    export LC_ALL="zh_CN.UTF-8"
+
+5.安装kde-l10n包    
+
+6.系统设置里边选择中文    
