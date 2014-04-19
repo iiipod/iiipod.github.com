@@ -21,7 +21,7 @@ author:
     subfont-autoscale=2
     subfont-osd-scale=2.5
     subfont-text-scale=3
-    ass=true
+    #ass=true
     embeddedfonts=true
     slang=en,zh
     sid=0
