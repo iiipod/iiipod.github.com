@@ -5,12 +5,10 @@ author:
   name: macint0sh
 ---
 # mplayer配置
-------
 
     alias mm='/usr/bin/mplayer -subcp GBK -subfont-text-scale 3'
     alias mm2='/usr/bin/mplayer -subcp UTF8 -subfont-text-scale 3'
 
-------
 #### vi ~/.mplayer/config 
 
     vo=vdpau,xv,
