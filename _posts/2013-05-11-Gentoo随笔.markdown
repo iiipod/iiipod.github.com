@@ -52,5 +52,7 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
 # 删除KDE包    
 `emerge -avC kde-base/*`  
 \------------------------------------------------  
-`ebuild /usr/portage/***/***.ebuild digest`
+`ebuild ***.ebuild digest`
+`ebuild ***.ebuild manifest`
+`openssl whirlpool ***.ebuild`
 
