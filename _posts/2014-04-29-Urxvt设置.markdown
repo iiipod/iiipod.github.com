@@ -8,7 +8,7 @@ author:
 
 下载urxvt-tabbedex
 
-`git clone https://github.com/stepb/urxvt-tabbedex.git[https://github.com/stepb/urxvt-tabbedex.git]`
+`git clone [https://github.com/stepb/urxvt-tabbedex.git](https://github.com/stepb/urxvt-tabbedex.git)`
 
 复制`tabbedex`到`/usr/lib/urxvt/perl/`目录
 
