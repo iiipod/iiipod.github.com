@@ -8,7 +8,7 @@ author:
 
 下载urxvt-tabbedex
 
-    git clone https://github.com/stepb/urxvt-tabbedex.git
+`git clone https://github.com/stepb/urxvt-tabbedex.git[https://github.com/stepb/urxvt-tabbedex.git]`
 
 复制`tabbedex`到`/usr/lib/urxvt/perl/`目录
 
@@ -54,7 +54,6 @@ author:
     URxvt*scrollTtyOutput: False
     URxvt*scrollTtyKeypress: True
     URxvt*secondaryScroll: True
-    URxvt*saveLines: 8000
 
     URxvt.cursorColor: #32cd32
     URxvt.cursorBlink: True
