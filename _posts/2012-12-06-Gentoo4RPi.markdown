@@ -1,0 +1,96 @@
+---
+title: Gentoo4RPi 
+layout: post
+author:
+  name: macint0sh
+---
+
+>由于没有电视机和hdmi显示器，因此手动添加自动启动sshd和net.eth0并配置网络，分区前先将其他版本img镜像dd一遍，再重新分区，保留第一分区，修改第二分区，也可添加第三分区用于下载等。
+
+
+    # Create the File Systems
+    root # mkfs.vfat -F 16 /dev/sdb1 
+    root # mkswap /dev/sdb2   //*可以忽略不添加swap*//
+    root # mkfs.ext4 /dev/sdb3
+    ----------------------------------------
+    Mounting the partitions
+    root # mkdir /mnt/gentoo 
+    root # mount /dev/sdb3 /mnt/gentoo
+    root # mkdir /mnt/gentoo/boot/
+    root # mount /dev/sdb1 /mnt/gentoo/boot
+    ----------------------------------------
+    Extract Stage 3 Image [http://ftp.df.lth.se/]
+    root # cd /tmp/ 
+    root # wget ftp://de-mirror.org/gentoo/releases/arm/autobuilds/current-stage3-armv6j_hardfp/stage3-armv6j_hardfp-*.tar.bz2
+    root # tar xfpj stage3-armv6j_hardfp-*.tar.bz2 -C /mnt/gentoo/
+    ----------------------------------------
+    Install Portage
+    root # wget http://distfiles.gentoo.org/snapshots/portage-latest.tar.bz2 ;
+    root # tar xjf portage-latest.tar.bz2 -C /mnt/gentoo/usr
+    ----------------------------------------
+    Install kernel and modules
+    root # cd /tmp/ 
+    root # git clone --depth 1 git://github.com/raspberrypi/firmware/
+    root # cd firmware/boot
+    root # cp * /mnt/gentoo/boot/
+    root # cp -r ../modules /mnt/gentoo/lib/
+    ----------------------------------------
+    Configure the system
+    ========================================
+    Edit fstab
+    root # nano /mnt/gentoo/etc/fstab
+    /dev/mmcblk0p1          /boot          auto            noauto,noatime  1 2
+    /dev/mmcblk0p3          /              ext4            noatime         0 1
+    /dev/mmcblk0p2          none           swap            sw              0 0
+    ----------------------------------------
+    Set boot options
+    root # nano /mnt/gentoo/boot/cmdline.txt添加
+    root=/dev/mmcblk0p3 rootdelay=10
+    ----------------------------------------
+    Configure timezone
+    root # cp /mnt/gentoo/usr/share/zoneinfo/Asia/Shanghai /mnt/gentoo/etc/localtime
+    (Next set the timezone)
+    root # echo "Asia/Shanghai" > /mnt/gentoo/etc/timezone
+    ----------------------------------------
+    Edit root password
+    root # nano /mnt/gentoo/etc/shadow
+    root::10770:0:::::  //*复制现有亦可*//
+    ----------------------------------------
+    cd etc/init.d 
+    ln -s net.lo net.eth0
+    nano etc/conf.d/net添加
+    config_eth0="192.168.0.2 netmask 255.255.255.0"
+    routes_eth0="default via 192.168.0.1"
+    dns_servers_eth0="192.168.0.1 8.8.8.8"
+    ----------------------------------------
+    Add to runlevels = rc-update add command
+    cd etc/runlevels/boot
+    ln -s ../../init.d/net.eth0 net.eth0
+    cd etc/runlevels/default
+    ln -s ../../init.d/sshd sshd
+    ----------------------------------------
+    nano etc/ssh/sshd_config确保:
+    PermitRootLogin yes
+    PasswordAuthentication yes
+    PermitEmptyPasswords no   //*视具体情况*//
+    #UsePAM yes
+    ----------------------------------------
+    Unmount the SD card.
+    root # umount /mnt/gentoo/boot 
+    root # umount /mnt/gentoo
+    ========================= 
+    root # reboot重启
+    =========================
+    Select profile
+    List the available profiles.
+    root # eselect profile list
+    Select the desired profile, for example 25
+    root # eselect profile set 25
+    ----------------------------------------
+    Enable ntp-client
+    emerge ntp
+    rc-update add ntp-client default 
+    ----------------------------------------
+    emerge --sync 完成
+
+[原文链接](http://wiki.gentoo.org/index.php?title=Raspberry_Pi_Quick_Install_Guide&redirect=no)
