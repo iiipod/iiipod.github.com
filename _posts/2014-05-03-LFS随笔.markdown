@@ -1,0 +1,15 @@
+---
+title: LFS随笔 
+layout: post
+author:
+  name: macint0sh
+---
+LFS 7.5部署脚本[下载](/download/LFS-7.5.tar.xz)
+
+编译busybox
+
+    patch -Np1 -i ../***.patch
+    make defconfig
+    make busybox
+
+
