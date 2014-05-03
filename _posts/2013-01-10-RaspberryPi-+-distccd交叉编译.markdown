@@ -15,7 +15,6 @@ RaspberryPi+distccd交叉编译
         }
     #rc-update add distccd default      //添加distccd到默认运行级别//
     #rc-config start distccd            //启动distccd//
-    =========================================================================
     
 Raspberry：
 
@@ -68,7 +67,7 @@ Raspberry：
     #nano /usr/sbin/distcc-watch
         {
             #!/bin/bash
-            # This script will only print non-blank results from distccmon-text N=1 # seconds to sleep in between checks
+            # This script will only print non-blank results from distccmon-text N=1 # 1 sec
             while true; do
             task=`DISTCC_DIR="/var/tmp/portage/.distcc/" distccmon-text`
             taskshort=`echo $task | tr -d ' '`
