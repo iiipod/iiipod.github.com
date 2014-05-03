@@ -5,9 +5,10 @@ author:
   name: macint0sh
 ---
 \------------------------------------------------   
-# Debian --> distcc   
+Debian --> distcc   
 #### \#apt-get install distcc    
 #### \#nano /etc/default/distcc:    
+    
     STARTDISTCC="true"   
     ALLOWEDNETS="127.0.0.1 192.168.0.0/24"   
 
@@ -17,7 +18,7 @@ author:
 \------------------------------------------------   
 # debian 7 安装 chromium 的 flash player 插件   
  
-去 http://get.adobe.com/flashplayer/?no_redirect 下载 tar.gz 格式的包(注意区分 32 位和64位系统)，然后解压。   
+去[http://get.adobe.com/cn/flashplayer/](http://get.adobe.com/cn/flashplayer/)下载 tar.gz 格式的包(注意区分 32 位和64位系统)，然后解压。   
 将 libflashplayer.so 复制到 /usr/lib/chromium/plugin/ 下。   
 在 chromium 中访问 chrome://plugins/， 如果看到 flash 相关选项就说明已经安装成功了,重启 chromium 就会生效。   
 
