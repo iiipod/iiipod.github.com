@@ -5,7 +5,8 @@ author:
   name: macint0sh
 ---
 LFS 7.5部署脚本[下载](/download/LFS-7.5.tar.xz)
-LFS 7.5部署脚本systemd[下载](/download/LFS-7.5-systemd.tar.xz)
+
+LFS 7.5部署脚本systemd版本[下载](/download/LFS-7.5-systemd.tar.xz)
 
 \---------------------
 
