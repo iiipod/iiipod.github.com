@@ -62,9 +62,9 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
         ->PCI support
             ->PCI access mode 
 
-0.BIOS      选择BIOS不能挂载VFS
-1.MMConfig  载入桌面快，联网较慢
-2.Direct    载入桌面慢，联网快
+0.BIOS      选择BIOS不能挂载VFS   
+1.MMConfig  载入桌面快，联网较慢    
+2.Direct    载入桌面慢，联网快    
 3.Any       自动选择上述3中方式，表现为载入桌面快，联网较慢   
 
 
