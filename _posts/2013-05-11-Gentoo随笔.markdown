@@ -70,7 +70,7 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
 
 # Gentoo编译glibc提示内核版本低      
 
-   Processor type and features
-        -> Disable the 32-bit vDSO (needed for glibc 2.3.3)
+    Processor type and featuresi      
+        -> Disable the 32-bit vDSO (needed for glibc 2.3.3)      
 
 <img src="/img/glibc-error_solve.jpg">
