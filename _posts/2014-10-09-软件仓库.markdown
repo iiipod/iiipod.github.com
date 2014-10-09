@@ -1,0 +1,19 @@
+---
+title: 软件仓库 
+layout: post
+author:
+  name: macint0sh
+---       
+
+###分屏管理[投影仪+电视机]        
+
+    命令行  客户端    
+    xrandr  arandr    
+        
+
+
+
+
+
+
+
