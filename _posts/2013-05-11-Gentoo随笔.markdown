@@ -74,3 +74,9 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
         -> Disable the 32-bit vDSO (needed for glibc 2.3.3)      
 
 <img src="/img/glibc-error_solve.jpg">
+
+# wireshark提示dumpcap没有权限                
+       
+    #gpasswd -a <user> wireshark 然后注销并重新登录                
+     
+
