@@ -8,33 +8,34 @@ author:
 \# cat /usr/src/linux/.config | grep CONFIG_TUN  
 
 服务端配置:
-    emerge openvpn easy-rsa
-认证:
+    emerge openvpn easy-rsa      
+认证:        
     
 客户端配置:       
 
- Gentoo >>>
-    # cat /usr/src/linux/.config | grep CONFIG_TUN      ** 检查内核是否支持tun **
-    # emerge openvpn
-    # ln -s /etc/init.d/openvpn /etc/init.d/openvpn.ok
-    # rc-update add openvpn.ok default
+ Gentoo >>>      
+    # cat /usr/src/linux/.config | grep CONFIG_TUN      ** 检查内核是否支持tun **      
+    # emerge openvpn      
+    # ln -s /etc/init.d/openvpn /etc/init.d/openvpn.ok        
+    # rc-update add openvpn.ok default        
     
-    # mkdir -p /etc/openvpn/ok
-    # cp ca.crt client1.crt client1.key /etc/openvpn/ok/
-编辑配置文件
-\# vi /etc/openvpn/ok.conf
-    resolv-retry infinite
-    ns-cert-type server
-    redirect-gateway
-    keepalive 20 60
-    #tls-auth ta.key 1
-    comp-lzo
-    verb 3
-    mute 20
-    route-method exe
-    route-delay 2
-    ####################
-    # specify client-side   这个client不是自定义名称 不能更改
+    # mkdir -p /etc/openvpn/ok         
+    # cp ca.crt client1.crt client1.key /etc/openvpn/ok/        
+编辑配置文件        
+\# vi /etc/openvpn/ok.conf      
+
+    resolv-retry infinite      
+    ns-cert-type server     
+    redirect-gateway     
+    keepalive 20 60      
+    #tls-auth ta.key 1      
+    comp-lzo      
+    verb 3      
+    mute 20      
+    route-method exe          
+    route-delay 2           
+    ####################        
+    # specify client-side       这个client不是自定义名称 不能更改
     client
 
     # tun/tap devcie    要与前面server.conf中的配置一致
