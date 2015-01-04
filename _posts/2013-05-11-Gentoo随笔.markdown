@@ -82,6 +82,12 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
 # *** Error in `/usr/lib/gcc/i686-pc-linux-gnu/bin/ld': corrupted double-linked list: 0x0a345350 ***       
 
     EXTRA_ECONF="--disable-pie" emerge --oneshot libsodium        
+# Gentoo 编译nmap提示找不到补丁文件     
+<img src="/img/nmap-error.jpg">        
+    
+    将/usr/portage/net-analyzer/nmap/files/目录的补丁文件复制到
+    $EPATCH_SOURCE目录[即/var/lib/layman/pentoo/net-analyzer/nmap/files/目录]       
+
 
           
 
