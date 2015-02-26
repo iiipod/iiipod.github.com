@@ -1,0 +1,12 @@
+---
+title: Zsh相关 
+layout: post
+author:
+  name: macint0sh
+---
+
+grep 提示:     
+    grep: warning: GREP_OPTIONS is deprecated; please use an alias or script     
+
+解决思路:删除自己配置文件内的 GREP_OPTIONS 配置项
+    
