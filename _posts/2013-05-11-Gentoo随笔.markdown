@@ -88,6 +88,15 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
     将/usr/portage/net-analyzer/nmap/files/目录的补丁文件复制到
     $EPATCH_SOURCE目录[即/var/lib/layman/pentoo/net-analyzer/nmap/files/目录]       
 
+# Gentoo 编译X提示无法加载glx模块,ABI版本不匹配      
+<img src="/img/xorg-module-ABI.png">
+
+    将当前xorg-server版本[大于等于]1.17的mask掉
+    >=x11-base/xorg-server-1.17.1      
+       
+
+
+
 
           
 
