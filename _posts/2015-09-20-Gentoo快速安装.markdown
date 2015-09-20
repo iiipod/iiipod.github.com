@@ -10,8 +10,9 @@ Live系统启动
 
     #fdisk /dev/sda     
 
-挂载     
-    #mount /dev/sda1 /mnt \***假设sda1为根[/]分区,没有boot分区，没有swap分区\***     
+挂载
+
+    #mount /dev/sda1 /mnt \*\*\*假设sda1为根[/]分区,没有boot分区，没有swap分区\*\*\*     
 
 下载stage3和portage包     
 
@@ -63,7 +64,7 @@ Chroot
 
 ****************************************         
 
-重启重启\***硬盘启动进入Gentoo\***重启重启             
+重启重启\*\**硬盘启动进入Gentoo\*\**重启重启             
 
 ****************************************         
 联网[4种方法，假设网络接口为eth0]               
@@ -77,7 +78,7 @@ Chroot
     ip link set dev eth0 up      
     ip route add default via 192.168.x.1       
     echo nameserver 114.114.114.114 > /etc/resolv.conf       
-****************************************      
+
 配置网络[假设网络接口为eth0]        
 
     #cd /etc/init.d     
@@ -92,7 +93,6 @@ Chroot
 
     #echo nameserver 114.114.114.114 > /etc/resolv.conf         
 
-****************************************          
 配置中文化          
 1.编辑/etc/locale.gen，确保以下locale未被注释：             
 
@@ -146,10 +146,13 @@ Chroot
     #emerge x11-misc/slim               
                         
     编辑/etc/conf.d/xdm         
-
+        
+        #name /etc/conf.f/xdm
+        {
         DISPLAYMANAGER="slim"           
-                        
-    \###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
+        }
+    
+    ###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
     #rc-update add xdm default 		开机启动slim                    
     #/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
 
