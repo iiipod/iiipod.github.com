@@ -12,7 +12,7 @@ Live系统启动
 
 挂载
 
-    #mount /dev/sda1 /mnt \*\*\*假设sda1为根[/]分区,没有boot分区，没有swap分区\*\*\*     
+    #mount /dev/sda1 /mnt ***假设sda1为根[/]分区,没有boot分区，没有swap分区***     
 
 下载stage3和portage包     
 
