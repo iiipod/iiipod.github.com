@@ -11,11 +11,12 @@ Live系统启动
     #fdisk /dev/sda     
 
 挂载     
-    #mount /dev/sda1 /mnt ***假设sda1为根[/]分区,没有boot分区，没有swap分区***     
+    #mount /dev/sda1 /mnt \***假设sda1为根[/]分区,没有boot分区，没有swap分区\***     
 
 下载stage3和portage包     
 
 解压     
+
     #cd /mnt     
     #tar xvf stage3*    
 
@@ -62,7 +63,7 @@ Chroot
 
 ****************************************         
 
-重启重启***硬盘启动进入Gentoo***重启重启             
+重启重启\***硬盘启动进入Gentoo\***重启重启             
 
 ****************************************         
 联网[4种方法，假设网络接口为eth0]               
@@ -104,52 +105,53 @@ Chroot
 
 2.运行locale-gen命令，生成locale                
 3.编辑/etc/env.d/02locale 内容如下[全局设置]：                  
+    
     #nano /etc/env.d/02locale                   
     {
     LANG="zh_CN.UTF-8"                      
     LC_COLLATE="C"                  
     }
-4.locale-gen              
+
+4.运行locale-gen              
 
 安装xorg-server                 
-编辑/etc/portage/make.conf                          
 
-    VIDEO_CARDS="radeon"	配置显卡使用radeon驱动                      
-    INPUT_DEVICES="evdev" 	配置键鼠                                
+    编辑/etc/portage/make.conf                          
+    
+        VIDEO_CARDS="radeon"	配置显卡使用radeon驱动                      
+        INPUT_DEVICES="evdev" 	配置键鼠                                
 
     #emerge -av xorg-server                 
-    #Xorg -configure 			   	            ***部分显卡不需要***        
-    #X -config /root/xorg.conf.new			    ***部分显卡不需要***         
-    #cp /root/xorg.conf.new /etc/X11/xorg.conf 	***部分显卡不需要***         
+    #Xorg -configure                            ***部分显卡不需要***        
+    #X -config /root/xorg.conf.new              ***部分显卡不需要***         
+    #cp /root/xorg.conf.new /etc/X11/xorg.conf  ***部分显卡不需要***         
     #startx                                                 
-    #cat /var/log/Xorg.0.log|grep EE 检查错误排除                   
+    #cat /var/log/Xorg.0.log|grep EE 检查错误排除
 
-****************************************               
 安装openbox                     
 
     #emerge openbox                         
                     
-编辑~/.xinitrc                      
-    
-    #nano ~/.xinitrc                    
-    {                       
-    exec openbox-session                    
-    }                       
+    编辑~/.xinitrc                      
+        
+        #nano ~/.xinitrc                    
+        {                       
+        exec openbox-session                    
+        }                       
                         
     #chmod +x ~/.xinitrc                        
 
-****************************************            
 安装slim                
 
     #emerge x11-misc/slim               
                         
-编辑/etc/conf.d/xdm         
+    编辑/etc/conf.d/xdm         
 
-    DISPLAYMANAGER="slim"           
+        DISPLAYMANAGER="slim"           
                         
-细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
-#rc-update add xdm default 		开机启动slim                    
-#/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
+    \###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
+    #rc-update add xdm default 		开机启动slim                    
+    #/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
 
 ****************************************         
 
