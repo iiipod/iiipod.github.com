@@ -4,127 +4,128 @@ layout: post
 author:
   name: macint0sh
 ---
-Live系统启动
+Live系统启动       
 
-分区
-#fdisk /dev/sda
+分区       
+#fdisk /dev/sda     
 
-挂载
-#mount /dev/sda1 /mnt ***假设sda1为根[/]分区,没有boot分区，没有swap分区***
+挂载     
+#mount /dev/sda1 /mnt ***假设sda1为根[/]分区,没有boot分区，没有swap分区***     
 
-下载stage3和portage包
+下载stage3和portage包     
 
-解压
-#cd /mnt
-#tar xvf stage3*
+解压     
+#cd /mnt     
+#tar xvf stage3*    
 
-#cd usr
-#tar xvf portage*
+#cd usr       
+#tar xvf portage*     
 
-#mount -t proc proc /mnt/proc
-#mount -o bind /dev /mnt/dev
-#chroot /mnt /bin/bash
+#mount -t proc proc /mnt/proc       
+#mount -o bind /dev /mnt/dev     
+#chroot /mnt /bin/bash       
 
-#passwd 更改密码
+#passwd 更改密码        
 
-安装内核/模块[可以临时从Live系统复制进来,以下地址是slackware 64位内核/模块包]
-wget http://mirrors.163.com/slackware/slackware64-14.1/slackware64/a/kernel-huge-3.10.17-x86_64-3.txz
-wget http://mirrors.163.com/slackware/slackware64-14.1/slackware64/a/kernel-modules-3.10.17-x86_64-3.txz
-内核放到/boot/
-#tar Jxvf kernel-huge*.txz -C / boot/
-模块放到/lib/modules/
-#tar Jxvf kernel-modules-smp*.txz -C / lib/
+安装内核/模块[可以临时从Live系统复制进来,以下地址是slackware 64位内核/模块包]      
+wget http://mirrors.163.com/slackware/slackware64-14.1/slackware64/a/kernel-huge-3.10.17-x86_64-3.txz    
+wget http://mirrors.163.com/slackware/slackware64-14.1/slackware64/a/kernel-modules-3.10.17-x86_64-3.txz     
+内核放到/boot/     
+#tar Jxvf kernel-huge*.txz -C / boot/    
+模块放到/lib/modules/      
+#tar Jxvf kernel-modules-smp*.txz -C / lib/     
 
-配置/etc/portage/make.conf
-MAKEOPTS="-j3" 		根据cpu配置
-GENTOO_MIRRORS="http://mirrors.sohu.com/gentoo/"
-LINGUAS="zh_CN"		配置应用程序中文
+配置/etc/portage/make.conf      
+MAKEOPTS="-j3"      根据cpu配置         
+GENTOO_MIRRORS="http://mirrors.sohu.com/gentoo/"      
+LINGUAS="zh_CN"     配置应用程序中文            
 
-同步portage树
-emerge --sync
+同步portage树      
+emerge --sync       
 
-安装网络连接工具[推荐net-tools]，重启后联网使用
-#emerge dhcpcd dhclient net-tools
+安装网络连接工具[推荐net-tools]，重启后联网使用         
+#emerge dhcpcd dhclient net-tools           
 
-安装grub
-#emerge grub
-#grub2-install /dev/sda
-#grub2-mkconfig -o /boot/grub/grub.cfg
-****************************************
+安装grub       
+#emerge grub      
+#grub2-install /dev/sda         
+#grub2-mkconfig -o /boot/grub/grub.cfg         
+****************************************         
 
-重启重启***硬盘启动进入Gentoo***重启重启
+重启重启***硬盘启动进入Gentoo***重启重启             
 
-****************************************
-联网[4种方法，假设网络接口为eth0]
-1.dhcpcd eth0
-2.dhclient eth0
-3.ifconfig eth0 192.168.x.x
-route add default gw 192.168.x.1
-echo nameserver 114.114.114.114 > /etc/resolv.conf
-4.ip addr add 192.168.x.2/24 dev eth0
-ip link set dev eth0 up
-ip route add default via 192.168.x.1 
-echo nameserver 114.114.114.114 > /etc/resolv.conf
-****************************************
-配置网络[假设网络接口为eth0]
-#cd /etc/init.d
-#ln -s net.lo net.eth0
-#rc-update add net.eth0 default
+****************************************         
+联网[4种方法，假设网络接口为eth0]               
+1.dhcpcd eth0      
+2.dhclient eth0       
+3.ifconfig eth0 192.168.x.x      
+route add default gw 192.168.x.1      
+echo nameserver 114.114.114.114 > /etc/resolv.conf     
+4.ip addr add 192.168.x.2/24 dev eth0     
+ip link set dev eth0 up      
+ip route add default via 192.168.x.1       
+echo nameserver 114.114.114.114 > /etc/resolv.conf       
+****************************************      
+配置网络[假设网络接口为eth0]        
+#cd /etc/init.d     
+#ln -s net.lo net.eth0      
+#rc-update add net.eth0 default      
 
-#nano /etc/conf.d/net
-{
-config_eth0="192.168.x.100/24"
-routes_eth0="default via 192.168.x.1"
-}
+#nano /etc/conf.d/net        
+{      
+config_eth0="192.168.x.100/24"           
+routes_eth0="default via 192.168.x.1"          
+}           
 
-#echo nameserver 114.114.114.114 > /etc/resolv.conf
-****************************************
-配置中文化
-1.编辑/etc/locale.gen，确保以下locale未被注释：
-enUS ISO-8859-1
-enUS.UTF-8 UTF-8
-zhCN GB18030
-zhCN.GBK GBK
-zhCN GB2312
-zhCN.UTF-8 UTF-8
-2.运行locale-gen命令，生成locale
-3.编辑/etc/env.d/02locale 内容如下[全局设置]：
-#nano /etc/env.d/02locale
-LANG="zh_CN.UTF-8"   
-LC_COLLATE="C"   
-然后执行locale-gen 
-****************************************
-安装xorg-server
-编辑/etc/portage/make.conf
-VIDEO_CARDS="radeon"	配置显卡使用radeon驱动
-INPUT_DEVICES="evdev" 	配置键鼠
+#echo nameserver 114.114.114.114 > /etc/resolv.conf         
+****************************************          
+配置中文化          
+1.编辑/etc/locale.gen，确保以下locale未被注释：             
+enUS ISO-8859-1             
+enUS.UTF-8 UTF-8            
+zhCN GB18030                
+zhCN.GBK GBK                
+zhCN GB2312             
+zhCN.UTF-8 UTF-8                
+2.运行locale-gen命令，生成locale                
+3.编辑/etc/env.d/02locale 内容如下[全局设置]：                  
+#nano /etc/env.d/02locale                   
+LANG="zh_CN.UTF-8"                      
+LC_COLLATE="C"                  
+然后执行locale-gen              
+****************************************            
+安装xorg-server                 
+编辑/etc/portage/make.conf                          
+VIDEO_CARDS="radeon"	配置显卡使用radeon驱动                      
+INPUT_DEVICES="evdev" 	配置键鼠                                
 
-#emerge -av xorg-server   
-#Xorg -configure 			   	            ***部分显卡不需要***
-#X -config /root/xorg.conf.new			    ***部分显卡不需要***
-#cp /root/xorg.conf.new /etc/X11/xorg.conf 	***部分显卡不需要***
-#startx
-#cat /var/log/Xorg.0.log|grep EE 检查错误排除
-****************************************
-安装openbox
-#emerge openbox
+#emerge -av xorg-server                 
+#Xorg -configure 			   	            ***部分显卡不需要***        
+#X -config /root/xorg.conf.new			    ***部分显卡不需要***         
+#cp /root/xorg.conf.new /etc/X11/xorg.conf 	***部分显卡不需要***         
+#startx                                                 
+#cat /var/log/Xorg.0.log|grep EE 检查错误排除                   
+****************************************               
+安装openbox                     
+#emerge openbox                         
+                    
+编辑~/.xinitrc                      
+#nano ~/.xinitrc                    
+{                       
+exec openbox-session                    
+}                       
+                        
+#chmod +x ~/.xinitrc                        
+****************************************            
+安装slim                
+#emerge x11-misc/slim               
+                        
+编辑/etc/conf.d/xdm         
+{                       
+DISPLAYMANAGER="slim"           
+}                                                           
+###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
+#rc-update add xdm default 		开机启动slim                    
+#/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
+****************************************         
 
-编辑~/.xinitrc
-#nano ~/.xinitrc
-{
-exec openbox-session
-}
-
-#chmod +x ~/.xinitrc
-****************************************
-安装slim 
-#emerge x11-misc/slim 
-
-编辑/etc/conf.d/xdm
-{
-DISPLAYMANAGER="slim"
-}
-###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM
-#rc-update add xdm default 		开机启动slim
-#/etc/init.d/xdm start|restart|stop	启动/重启/停止slim
-****************************************
