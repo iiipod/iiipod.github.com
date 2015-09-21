@@ -4,7 +4,7 @@ layout: post
 author:
   name: macint0sh
 ---
-#1.grub2启动win8.1[sda1为启动分区,sda2为win8]
+#1.grub2启动win8[sda1为win8启动分区,sda2为win8]
 
     set root=hd0,1
     insmod ntfs
