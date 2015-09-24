@@ -24,7 +24,7 @@ author:
 4.编辑~/.xinitrc文件[个人设置]:
 
     #!/bin/bash
-    export LANG=zh_CN.UTF-8
+    export LANG="zh_CN.UTF-8"
     export LC_ALL="zh_CN.UTF-8"
 
 5.安装kde-l10n包    

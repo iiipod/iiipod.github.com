@@ -9,6 +9,6 @@ author:
     set root=hd0,1
     insmod ntfs
     insmod ntldr
-    ntldr /bootmgr +1
+    ntldr /bootmgr 
 
 
