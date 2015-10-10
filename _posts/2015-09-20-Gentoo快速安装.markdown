@@ -157,7 +157,7 @@ Chroot
         DISPLAYMANAGER="slim"           
                
     
-    ###细节微调请看gentoo的[slim文档](https://wiki.gentoo.org/wiki/SLiM)              
+    ###细节微调请看gentoo的[slim文档](http://wiki.gentoo.org/wiki/SLiM)              
     #rc-update add xdm default 		开机启动slim                    
     #/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
 
