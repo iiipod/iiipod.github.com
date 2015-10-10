@@ -52,9 +52,9 @@ Chroot
 
     #emerge --sync       
 
-安装网络连接工具[推荐net-tools]，重启后联网使用 
+安装网络连接工具[4选1,推荐第3个net-tools]，重启后联网使用 
 
-    #emerge dhcpcd dhclient net-tools           
+    #emerge dhcpcd dhcp net-tools iproute2           
 
 安装grub 
 
@@ -86,10 +86,10 @@ Chroot
     #rc-update add net.eth0 default      
 
     #nano /etc/conf.d/net        
-    {      
+          
     config_eth0="192.168.x.100/24"           
     routes_eth0="default via 192.168.x.1"          
-    }           
+               
 
     #echo nameserver 114.114.114.114 > /etc/resolv.conf         
 
@@ -107,12 +107,17 @@ Chroot
 3.编辑/etc/env.d/02locale 内容如下[全局设置]：                  
     
     #nano /etc/env.d/02locale                   
-    {
+           
     LANG="zh_CN.UTF-8"                      
     LC_COLLATE="C"                  
-    }
+            
 
 4.运行locale-gen              
+
+设置CPU\_FLAGS[假设为X86架构]      
+
+    #emerge -av app-portage/cpuinfo2cpuflags      
+    #cpuinfo2cpuflags-x86 >> /etc/portage/make.conf      
 
 安装xorg-server                 
 
@@ -135,9 +140,9 @@ Chroot
     编辑~/.xinitrc                      
         
         #nano ~/.xinitrc                    
-        {                       
+                               
         exec openbox-session                    
-        }                       
+                               
                         
     #chmod +x ~/.xinitrc                        
 
@@ -148,11 +153,11 @@ Chroot
     编辑/etc/conf.d/xdm         
         
         #name /etc/conf.f/xdm
-        {
+              
         DISPLAYMANAGER="slim"           
-        }
+               
     
-    ###细节微调请看slim的文档https://wiki.gentoo.org/wiki/SLiM              
+    ###细节微调请看gentoo的[slim文档](https://wiki.gentoo.org/wiki/SLiM)              
     #rc-update add xdm default 		开机启动slim                    
     #/etc/init.d/xdm start|restart|stop	启动/重启/停止slim                  
 
