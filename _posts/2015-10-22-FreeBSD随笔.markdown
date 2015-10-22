@@ -1,0 +1,41 @@
+---
+title: FreeBSD随笔 
+layout: post
+author:
+  name: macint0sh
+---
+配置应用程序依赖
+
+    当前程序
+    make config
+    make showconfig
+    make rmconfig
+    make fetch
+    -------
+    全局依赖
+    make config-recursive
+    make showconfig-recursive
+    make rmconfig-recursive ### 慎用 ###
+    make fetch-recursive
+
+使用portsmap更新ports
+
+    portsnap fetch
+    portsnap extract
+    portsnap update
+    或者可以一步到位#portsnap fetch update
+
+使用svn安装内核源码
+
+    安装svn
+    # cd /usr/ports/devel/subversion
+    # make install clean
+
+    同步 kernel source 到 /usr/src
+    svn co https://svn.freebsd.org/socsvn/mirror/FreeBSD/head/ /usr/src/
+    
+    同步完成后的日常更新 
+    # cd /usr/src
+    # make update SVN_UPDATE=yes
+
+
