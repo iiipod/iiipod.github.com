@@ -1,0 +1,16 @@
+---
+title: Python随笔
+layout: post
+author:
+  name: macint0sh
+---
+##python 中文注释方法
+
+    python默认ASCII     
+    定义方法[必须在文档的第一或者第二行添加,可选编码gbk/utf-8/ascii等]:        
+    1. #coding=utf-8                
+    2. # -*- coding: utf-8 -*-       
+    3. # vim: set fileencoding=utf-8        
+    [官方网站](http://www.python.org/dev/peps/pep-0263/)       
+
+
