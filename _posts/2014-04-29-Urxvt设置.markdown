@@ -8,8 +8,9 @@ author:
 
 下载urxvt-tabbedex：
 
-`git clone https://github.com/stepb/urxvt-tabbedex.git`
-`或者 git clone https://github.com/shaggytwodope/tabbedex-urxvt.git`
+    `git clone https://github.com/stepb/urxvt-tabbedex.git`     
+    `或者 git clone https://github.com/shaggytwodope/tabbedex-urxvt.git`       
+
 复制`tabbedex`到`/usr/lib/urxvt/perl/`目录
 
 修改~/.Xdefaults：
