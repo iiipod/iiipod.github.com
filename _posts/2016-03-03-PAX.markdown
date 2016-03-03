@@ -11,7 +11,7 @@ VirtualBOX
 <img src="/img/PAX_VirtualBox1.png">      
 
     # not set
-    #CONFIG_PAX_KERNEXEC#CONFIG_PAX_KERNEXEC    
+    #CONFIG_PAX_KERNEXEC    
 
 <img src="/img/PAX_VirtualBox2.png".png">
 
