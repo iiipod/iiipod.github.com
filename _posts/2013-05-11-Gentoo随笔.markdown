@@ -94,11 +94,10 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
     将当前xorg-server版本[大于等于]1.17的mask掉
     >=x11-base/xorg-server-1.17.1      
        
+# 编译32位兼容提示 Cannot run C compiled programs      
+<img src="/img/abi_x86_32.png">     
 
+    [*] IA32 Emulation    
+    <*>   IA32 a.out support    
 
-
-
-          
-
-     
 
