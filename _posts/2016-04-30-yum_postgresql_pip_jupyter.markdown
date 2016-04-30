@@ -58,5 +58,5 @@ author:
 
     #pip install jupyter      
 
-    $jupyter-notebook运行，此时浏览器知道打开载入127.0.0.1:8888     
+    $jupyter-notebook运行，此时浏览器自动打开并载入127.0.0.1:8888     
 
