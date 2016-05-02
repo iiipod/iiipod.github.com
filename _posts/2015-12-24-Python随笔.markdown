@@ -4,7 +4,7 @@ layout: post
 author:
   name: macint0sh
 ---
-##python 中文注释方法[官方网站](http://www.python.org/dev/peps/pep-0263/)    
+## python 中文注释方法[官方网站](http://www.python.org/dev/peps/pep-0263/)    
 
     python默认ASCII     
     定义方法[必须在文档的第一或者第二行添加,可选编码gbk/utf-8/ascii等]:        
@@ -12,5 +12,10 @@ author:
     2. # -*- coding: utf-8 -*-       
     3. # vim: set fileencoding=utf-8        
 
+## python使用requests库中文GBK乱码
+
+    检查网页head是否包含类似charset=gb2312的说明
+    res = requests.get(html)
+    res.encoding = 'gb2312'
 
 
