@@ -17,5 +17,8 @@ author:
     检查网页head是否包含类似charset=gb2312的说明
     res = requests.get(html)
     res.encoding = 'gb2312'
+    print(res.text)
+
+
 
 
