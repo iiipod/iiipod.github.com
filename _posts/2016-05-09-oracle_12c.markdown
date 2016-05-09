@@ -6,19 +6,19 @@ author:
 ---
 系统默认只安装了X桌面情况下安装oracle 12c 的过程，并非按照官方教程操作，注意关键步骤可能需要修改
 
-0.unzip解压下载的两个zip文件到同一目录并执行    
+0. unzip解压下载的两个zip文件到同一目录并执行    
     
     $runInstaller
 
-1.hosts
+1. hosts
 检查确保hostname和hosts相匹配，使用默认的localhost.localdomain可能无效，尽量使用host.domain的格式
 
 2. Packages警告:
 rpm 安装  mpfr  libmpc cpp kernel-headers glibc-headers glibc-devel gcc libstdc++-devel gcc-c++ nss-softokn-freebl glibc compat-libcap1  libaio-devel ksh
 下载[cpmpat-libstdc++-33](http://mirrors.ustc.edu.cn/centos/7.2.1511/os/x86_64/Packages/compat-libstdc%2B%2B-33-3.2.3-72.el7.x86_64.rpm)并安装[RHEL官方系统不带,CentOS官方仓库有]
 
-3. OS Kernel Parameters错误修改/etc/sysctl.conf:     
-    
+3. OS Kernel Parameters错误修改/etc/sysctl.conf:         
+
     fs.aio-max-nr = 1048576      
     fs.file-max = 6815744       
     kernel.shmall = 2097152      
