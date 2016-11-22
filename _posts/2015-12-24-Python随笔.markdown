@@ -19,6 +19,14 @@ author:
     res.encoding = 'gb2312'
     print(res.text)
 
+## Scrapy: twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly
+
+    编辑settings.py文件USER_AGENT项
+
+## Scrapy: 503 Service Unavailable
+
+    编辑settings.py文件DOWNLOAD_DELAY项
+
 
 
 
