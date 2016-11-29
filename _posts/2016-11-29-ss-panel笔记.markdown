@@ -1,0 +1,94 @@
+---
+title: ss-panel笔记
+layout: post
+author:
+  name: macint0sh
+---
+#### 1.安装lnmp
+
+	wget -c http://soft.vpser.net/lnmp/lnmp1.3.tar.gz 
+    tar zxf lnmp1.3.tar.gz 	
+    cd lnmp1.3 
+    ./install.sh lnmp
+
+#### 2.设置数据库
+
+	create database xxx;
+	create user 'dog'@'localhost' identified by '123456'; 
+	grant all privileges on xxx.* to 'dog'@'localhost' identified by '123456';
+
+#### 3.设置站点
+
+	lnmp vhost add
+
+#### 4.下载ss-panel
+
+	cd /home/wwwroot/
+
+	git clone https://github.com/orvice/ss-panel.git
+	
+    cd ss-panel
+	
+	curl -sS https://getcomposer.org/installer | php
+    
+	php composer.phar  install
+
+	cp .env.example .env
+    
+    #修改权限
+    chown -R www:www ss-panel
+    chmod -R 777 storage
+    
+#### 5.Edit .env
+
+
+#### 6.导入 db-testing.sql 文件到 xxx 数据库.
+
+	$ mysql -u dog -p
+    mysql>use xxx;
+    mysql>source db.sql;
+
+#### 7.Nginx 配置:
+
+	#if you download ss-panel on path /home/www/ss-panel
+	root /home/www/ss-panel/public;
+
+	location / {
+    	try_files $uri $uri/ /index.php$is_args$args;
+	}
+    
+#### 8.启动测试 web [多次测试]
+
+	lnmp start/restart
+    
+#### 9.下载多用户版本
+
+	ggit clone https://github.com/mengskysama/shadowsocks.git
+
+	cd shadowsocks
+    
+    git checkout manyuser
+    
+#### 10.配置 Config.py
+	#Config
+	MYSQL_HOST = 'localhost'
+	MYSQL_PORT = 3306
+	MYSQL_USER = 'dog'
+	MYSQL_PASS = '123456'
+	MYSQL_DB = 'xxx'
+
+	MANAGE_PASS = 'password'
+	#if you want manage in other server you should set this value to global ip
+	MANAGE_BIND_IP = '127.0.0.1'
+	#make sure this port is idle
+	MANAGE_PORT = 666
+
+#### 11.安装依赖库，运行服务
+
+	pip install cymysql m2crypto [需要python-devel]
+
+	python server.py
+
+	while : ; do python server.py ; done    
+
+
