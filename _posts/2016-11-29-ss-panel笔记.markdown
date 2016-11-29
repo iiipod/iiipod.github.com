@@ -9,7 +9,7 @@ author:
 	wget -c http://soft.vpser.net/lnmp/lnmp1.3.tar.gz 
     tar zxf lnmp1.3.tar.gz 	
     cd lnmp1.3 
-    ./install.sh lnmp
+    ./install.sh lnmp [PHP 5.6+ / rewrite / MYSQL 5.x.x]
 
 #### 2.设置数据库
 
@@ -41,7 +41,8 @@ author:
     
 #### 5.Edit .env
 
-
+    don't set redis      
+    
 #### 6.导入 db-testing.sql 文件到 xxx 数据库.
 
 	$ mysql -u dog -p
@@ -63,7 +64,7 @@ author:
     
 #### 9.下载多用户版本
 
-	ggit clone https://github.com/mengskysama/shadowsocks.git
+	git clone https://github.com/mengskysama/shadowsocks.git
 
 	cd shadowsocks
     
