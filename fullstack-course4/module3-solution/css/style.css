@@ -26,6 +26,15 @@ body {
   	font-family:"Times New Roman",Georgia,Serif;
 }
 
+/*.container {
+	padding: 0;
+}
+
+.container > .navbar-header {
+	margin-right: 0;
+  	margin-left: 0;
+}*/
+
 .row {
 	border: 10px thick green;
 	margin: 10px 10px 10px 10px;
@@ -42,7 +51,7 @@ body {
 	padding: 0 10px 0 10px;
 }
 body h1 {
-	text-align: left;
+	text-align: center;
 }
 
 #header-nav {
@@ -59,14 +68,19 @@ body h1 {
 	color: red;
 	text-align: center;
 	background-color: gray;
-	border: 3px;
+	border: 1px;
+	
+}
+
+#nav-list li {
+
 }
 
 #nav-list a {
 	border: 2px solid black;
 	border-bottom: 0;
 	color: red;
-	background-color: #fff;
+	background-color: #fff;	
 }
 
 #nav-list > li:nth-child(3)  {
