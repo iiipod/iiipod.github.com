@@ -4,9 +4,9 @@ layout: post
 author:
   name: macint0sh
 ---
-# Arch Linux 配置 nginx + php
 
 	#pacman -S nginx php
+
 
 ###配置nginx，修改配置文件，主要是改成以下内容
 
@@ -24,7 +24,7 @@ author:
         include        fastcgi_params;
     }
 
- ####修改 /etc/php-fpm.d/www.conf配置
+####修改 /etc/php-fpm.d/www.conf配置
 
 	user  = www
 	group = www
