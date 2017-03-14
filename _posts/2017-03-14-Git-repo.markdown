@@ -1,0 +1,44 @@
+---
+title: 本地git仓库
+layout: post
+author:
+  name: macint0sh
+---
+####安装git
+
+ 	#pacman -S git
+#### 检查git用户，没有创建
+
+ 	#useradd -m git
+#### 切换到 git 工作目录
+
+	$su - git 
+    	$cd && mkdir .ssh && chmod 700 .ssh
+	$touch .ssh/authorized_keys
+    	$chmod 600 .ssh/authorized_keys
+#### 添加公钥
+
+	$cat id_rsa.pub >> ~/.ssh/authorized_keys
+#### 添加 repo    
+
+	$cd && mkdir test.git
+	$cd test.git
+	$git init --bare
+	# 一般提示 Initialized empty Git repository in /home/username/test.git 表示成功
+
+#### 修改git用户登录shell,禁止git用户ssh登录
+
+	$which git-shell
+    	#将命令返回结果添加至 /etc/passwd
+    
+#### 测试
+
+	$ssh git@git-server-ip
+	出现下面的提示表示不能ssh登录只能使用git命令了：
+	fatal: Interactive git shell is not enabled.
+	hint: ~/git-shell-commands should exist and have read and execute access.
+    
+    	#clone 测试
+    	$git clone git@git-server-ip:test.git
+
+

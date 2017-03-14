@@ -1,0 +1,26 @@
+---
+title: RHEL/CentOS 配置Yum源
+layout: post
+author:
+  name: macint0sh
+---
+#### 挂载iso，复制到本地目录
+
+	#mount -o loop rhel-server-7.2-x86_64-dvd.iso /mnt
+	#mkdir /z/repo
+	#cp -r /mnt/* /z/repo
+
+#### 编辑本地YUM源文件
+
+	#cd /etc/yum.repos.d/
+	#清除旧配置文件，rm -rf *.repo
+	#vim local.repo
+	[rhel7.2]
+	name=rhel7.2
+	baseurl=file:///z/repo
+	enabled=1
+	gpgcheck=1
+
+#### 导入key,否则将gpgcheck设为0
+
+	#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
