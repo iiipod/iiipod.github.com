@@ -29,21 +29,19 @@ name: macint0sh
 	</VirtualHost>
 
 ## apache 2.2 版本
-##### 编辑 /etc/php/fpm-php7.0/fpm.d/www.conf:
 
+	编辑 /etc/php/fpm-php7.0/fpm.d/www.conf:
 	user = apache
 	group = apache
 	listen = 127.0.0.1:9000
 
-
-##### 编辑 /etc/apache2/modules.d/70_mod_php.conf:
-
+	编辑 /etc/apache2/modules.d/70_mod_php.conf:
 	ProxyPassMatch ^/(.*\.php)$ fcgi://127.0.0.1:9000/var/www/localhost/htdocs/$1
 
 
 ##  apache 2.4 版本 
-##### 编辑 /etc/php/fpm-php7.0/fpm.d/www.conf:
 
+	编辑 /etc/php/fpm-php7.0/fpm.d/www.conf:
 	user = apache
 	group = apache
     
@@ -55,8 +53,7 @@ name: macint0sh
 	listen.mode = 0660
 
 
-##### 编辑 /etc/apache2/modules.d/70_mod_php.conf:
-
+	编辑 /etc/apache2/modules.d/70_mod_php.conf:
 	## ProxyPassMatch ^/(.*\.php)$ fcgi://127.0.0.1:9000/var/www/localhost/htdocs/$1
 	<FilesMatch "\.php$">
   		SetHandler "proxy:unix:/var/run/php-fpm/www.sock|fcgi://localhost"
