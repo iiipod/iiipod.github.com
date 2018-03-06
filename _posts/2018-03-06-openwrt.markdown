@@ -1,0 +1,20 @@
+---
+title: Openwrt 随笔
+layout: post
+author:
+  name: macint0sh
+---
+## Openwrt 升级所有软件包       
+	opkg list-upgradable | xargs opkg upgrade	
+	opkg list-upgradable | awk -F ‘ – ‘ ‘{print $1}’ | xargs opkg upgrade	
+	opkg list-upgradable | cut -d ” ” -f1 | xargs -r opkg upgrade	
+	opkg upgrade `opkg list-upgradable|cut -f1 -d-`		
+	opkg upgrade $(opkg list-upgradable | cut -f1 -d ‘ ‘)		
+	eval $(opkg list-upgradable |grep -v ‘Multiple packages’| sed ‘s/ – .*//’ | sed ‘s/^/opkg upgrade /’)		
+	opkg upgrade $(opkg list-upgradable | awk ‘{ print $1 }’)		
+	opkg update >/dev/null; PACKS=”$(opkg list-upgradable | awk ‘{ printf “%s “,$1 }’)” && [[ ! -z “$PACKS” ]] && opkg install $PACKS || echo $’\nNo packages to install\n’
+
+
+
+
+
