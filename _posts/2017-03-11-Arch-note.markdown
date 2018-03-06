@@ -4,8 +4,13 @@ layout: post
 author:
   name: macint0sh
 ---
-# bsdcpio: Failed to set default locale, 同时fcitx无法切换成中文
+## bsdcpio: Failed to set default locale, 同时fcitx无法切换成中文
+	#locale-gen    
+	
+## configure error  
+	Q: syntax error near unexpected token + PKG_CHECK_MODULES  
+	A: pacman -S pkg-config
 
-
-	#locale-gen
-    
+## configure error  
+	Q: syntax error near unexpected token + AX_CHECK_COMPILE_FLAG  
+	A: pacman -S autoconf-archive 

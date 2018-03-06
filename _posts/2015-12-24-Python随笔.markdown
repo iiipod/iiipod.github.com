@@ -26,7 +26,19 @@ author:
 ## Scrapy: 503 Service Unavailable
 
     编辑settings.py文件DOWNLOAD_DELAY项
+ 
+## Python 错误
+	Q: redshift-gtk ::: AttributeError: module 'gi' has no attribute 'require_version'       
+	A: pip install pygobject    
 
+## pip 安装特定版本的 Python 包    
+	#pip2 install -v ipython==5.4    
+   
+## Jupyter 支持 C    
+	# pip install jupyter-c-kernel    
+	# install_c_kernel    
+	$ jupyter-notebook    
+   
 
 
 
