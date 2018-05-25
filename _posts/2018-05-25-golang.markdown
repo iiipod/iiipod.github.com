@@ -1,0 +1,25 @@
+---
+title: golang 随笔
+layout: post
+author:
+  name: macint0sh
+---
+#### $GOPATH #编译工作目录，src目录存放准备编译的软件源代码
+#### $GOROOT #golang 安装目录，尽量保持干净
+
+Q: cannot find package "github.com/go-redis/redis"  
+	# go get github.com/go-redis/redis	#默认下载到$GOPATH/src目录
+
+Q: unrecognized import path "golang.org/x/sys/unix" (https fetch: Get https://golang.org/x/sys/unix)     
+or unrecognized import path "golang.org/x/crypto/md4" (https fetch: Get https://golang.org/x/crypto/md4)  
+  
+	# cd $GOPATH/src/ || cd $GOROOT/src/
+	# mkdir -p golang.org/x
+    # cd golang.org/x
+    # git clone https://github.com/golang/sys
+	# git clone https://github.com/golang/crypto
+
+
+
+
+
