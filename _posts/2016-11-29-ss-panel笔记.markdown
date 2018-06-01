@@ -92,4 +92,13 @@ author:
 
 	while : ; do python server.py ; done    
 
+### 12.管理操作    
+	添加管理员    [在网站根目录下执行]
+	php xcat createAdmin
+	
+	重置流量
+	php xcat resetTraffic
+	
+	发送流量使用情况邮件
+	php xcat sendDiaryMail
 
