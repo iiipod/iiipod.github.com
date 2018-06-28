@@ -1,0 +1,17 @@
+---
+title: Vim 随笔
+layout: post
+author:
+  name: macint0sh
+---
+
+    au BufRead *.py map <buffer> <F9> :w<CR>:!/usr/bin/env python2 % <CR>     
+    au BufRead *.c map <buffer> <F10> :w<CR>:!gcc % &&./a.out <CR>     
+    "au BufRead *.java map <buffer> <F7> :w<CR>:!javac % <CR>     
+    "au BufRead *.java map <buffer> <F8> :w<CR>:!java %:r <CR>     
+    map <F7> :w<CR>:!javac % <CR>      
+    map <F8> :w<CR>:!java %:r <CR>	    
+
+
+
+
