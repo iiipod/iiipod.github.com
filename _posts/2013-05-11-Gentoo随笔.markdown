@@ -100,4 +100,8 @@ ATTR{dev_id}=="0x0",ATTR{type}=="1",KERNEL=="wlan*",NAME="wlan0"`
     [*] IA32 Emulation    
     <*>   IA32 a.out support    
 
+# 安装本地仓库 local 的软件包      
+    # emerge gcc::local      
+    # emerge =gcc-7.3.0::local      
+
 
