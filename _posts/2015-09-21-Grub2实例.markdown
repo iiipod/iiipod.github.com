@@ -6,15 +6,21 @@ author:
 ---
 #1. grub2启动win8[sda1为win8启动分区,sda2为win8]
 
-    set root=hd0,1
-    insmod ntfs
-    insmod ntldr
-    ntldr /bootmgr 
+    set root=hd0,1    
+    insmod ntfs    
+    insmod ntldr    
+    ntldr /bootmgr     
 
-#2. grub2 启动 Fedora 安装镜像    
+#2. grub2 启动 Fedora netinstall 安装镜像    
 
     loopback loop /filename.iso   
     linux (loop)/xxx/vmlinuz inst.repo=hd:UUID=xyzxyzxyz:/filename.iso   
     initrd (loop)/xxx/initrd.img    
 注: UUID为镜像所在分区的UUID
-    
+
+#3. grub2 启动 Fedora Live 安装镜像    
+
+    loopback loop /filename.iso     
+    linux (loop)/isolinux/vmlinuz root=live:CDLABEL=xyzxyzxyz iso-scan/filename=/filename.iso    
+    initrd (loop)/isolinux/initrd.img    
+注: CDLABEL需用blkid检查或者grub命令行执行ls (loop)检查    
