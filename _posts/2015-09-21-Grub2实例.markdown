@@ -4,11 +4,17 @@ layout: post
 author:
   name: macint0sh
 ---
-#1.grub2启动win8[sda1为win8启动分区,sda2为win8]
+#1. grub2启动win8[sda1为win8启动分区,sda2为win8]
 
     set root=hd0,1
     insmod ntfs
     insmod ntldr
     ntldr /bootmgr 
 
+#2. grub2 启动 Fedora 安装镜像    
 
+    loopback loop /filename.iso   
+    linux (loop)/xxx/vmlinuz inst.repo=hd:UUID=xyzxyzxyz:/filename.iso   
+    initrd (loop)/xxx/initrd.img    
+注: UUID为镜像所在分区的UUID
+    
