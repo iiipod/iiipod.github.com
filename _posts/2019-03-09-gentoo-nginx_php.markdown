@@ -8,7 +8,7 @@ name: macint0sh
 
 	# emerge -av nginx    
 
-编辑 /etc/nginx/nginx.conf:
+编辑 /etc/nginx/nginx.conf:    
 
     user apache apache;    #使用apache用户可以兼容apache的php设置    
 
@@ -21,12 +21,12 @@ name: macint0sh
     	include /etc/nginx/mime.types;    
 
     	server {    
-	    	listen 80;    
+            listen 80;    
 		    server_name localhost;    
 		    #autoindex on;    
 
 		    location / {    
-		    root /z/backup/web; #设置网站根目录    
+		    root /web; #设置网站根目录    
 		    index index.php index.html;    
 		    }    
 
@@ -34,11 +34,15 @@ name: macint0sh
 		    fastcgi_pass	unix:/var/run/php-fpm/www.sock; #与www.conf配置一致    
             #fastcgi_pass   127.0.0.1:9000; #与www.conf配置一致    
 		    fastcgi_index index.php;    
-		    fastcgi_param SCRIPT_FILENAME /z/backup/web$fastcgi_script_name;    
+		    fastcgi_param SCRIPT_FILENAME /web$fastcgi_script_name;    
 		    include fastcgi_params;    
 		    }    
 	    }    
     }    
+
+修改网站目录权限:    
+
+    # chown -R apache:apache /web    
 
 安装php:    
 
